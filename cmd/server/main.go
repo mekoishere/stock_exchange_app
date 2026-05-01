@@ -23,6 +23,7 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/health", api.HealthCheckHandler).Methods("GET")
 	r.HandleFunc("/wallets/{wallet_id}", api.GetWalletByIdHandler).Methods("GET")
+	r.HandleFunc("/wallets/{wallet_id}/stocks/{stock_name}", api.PostTradeHandler).Methods("POST")
 	r.HandleFunc("/wallets/{wallet_id}/stocks/{stock_name}", api.GetStockInWalletHandler).Methods("GET")
 	r.HandleFunc("/stocks", api.GetBankStocksHandler).Methods("GET")
 	r.HandleFunc("/stocks", api.PostBankStocksHandler).Methods("POST")

@@ -20,3 +20,7 @@ type AuditLogEntry struct {
 	WalletID  string `json:"wallet_id"`
 	StockName string `json:"stock_name"`
 }
+
+type TradeRequest struct {
+	Type string `json:"type"`
+}
