@@ -32,17 +32,14 @@ func UpdateBankStocks(stocks []models.BankStock) error {
 	}
 	defer tx.Rollback()
 
-	// 1. Clear current bank stocks
 	if _, err := tx.Exec("DELETE FROM bank_stocks"); err != nil {
 		return err
 	}
 
-	// 2. Clear all wallet stocks
 	if _, err := tx.Exec("DELETE FROM wallet_stocks"); err != nil {
 		return err
 	}
 
-	// 3. Insert new bank stocks
 	for _, s := range stocks {
 		if _, err := tx.Exec("INSERT INTO bank_stocks (stock_name, quantity) VALUES (?, ?)", s.StockName, s.Quantity); err != nil {
 			return err

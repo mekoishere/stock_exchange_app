@@ -27,6 +27,8 @@ func main() {
 	r.HandleFunc("/wallets/{wallet_id}/stocks/{stock_name}", api.GetStockInWalletHandler).Methods("GET")
 	r.HandleFunc("/stocks", api.GetBankStocksHandler).Methods("GET")
 	r.HandleFunc("/stocks", api.PostBankStocksHandler).Methods("POST")
+	r.HandleFunc("/log", api.GetAuditLogsHandler).Methods("GET")
+	r.HandleFunc("/chaos", api.ChaosHandler).Methods("POST")
 
 	port := os.Getenv("APP_PORT")
 	if port == "" {

@@ -16,7 +16,11 @@ func InitDB() error {
 	cfg.User = os.Getenv("DBUSER")
 	cfg.Passwd = os.Getenv("DBPASS")
 	cfg.Net = "tcp"
-	cfg.Addr = "127.0.0.1:" + os.Getenv("DBPORT")
+	dbHost := os.Getenv("DBHOST")
+	if dbHost == "" {
+		dbHost = "127.0.0.1"
+	}
+	cfg.Addr = dbHost + ":" + os.Getenv("DBPORT")
 	cfg.DBName = "stock_market"
 
 	var err error

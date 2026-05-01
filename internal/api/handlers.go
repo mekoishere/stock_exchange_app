@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 	"stock_exchange_app/internal/models"
 	"stock_exchange_app/internal/repository"
 
@@ -93,4 +94,8 @@ func PostTradeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusOK)
+}
+
+func ChaosHandler(w http.ResponseWriter, r *http.Request) {
+	os.Exit(1)
 }
